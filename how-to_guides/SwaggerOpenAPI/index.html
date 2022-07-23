@@ -1,0 +1,1267 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Swagger Introduction & Examples - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#swagger-introduction-examples" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Swagger Introduction & Examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to Docs as Code
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API DOCs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API DOCs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API DOCs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API%20DOCs/API-Documentation/" class="md-nav__link">
+        API Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Explanation docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanation docs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Explanation docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation_docs/API-PARADIGMS/" class="md-nav__link">
+        API paradigms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation_docs/Airbnb/" class="md-nav__link">
+        Airbnb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation_docs/QR_codes_explained/" class="md-nav__link">
+        QR Codes Explained
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          How to guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="How to guides" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Swagger Introduction & Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Swagger Introduction & Examples
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-openapi-swagger-open-source-tools" class="md-nav__link">
+    Introduction to OpenAPI &amp; Swagger Open Source Tools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openapi-swagger" class="md-nav__link">
+    OpenAPI &amp; Swagger
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAPI &amp; Swagger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openapi" class="md-nav__link">
+    OpenAPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger" class="md-nav__link">
+    Swagger
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-openapi" class="md-nav__link">
+    Why Use OpenAPI?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-openapi-specification" class="md-nav__link">
+    Introduction to OpenAPI Specification
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to OpenAPI Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-structure" class="md-nav__link">
+    Basic Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-url" class="md-nav__link">
+    Base URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes-produces" class="md-nav__link">
+    Consumes, Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    Paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-and-output-models" class="md-nav__link">
+    Input and Output Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    Authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-swagger-open-source-tools" class="md-nav__link">
+    Introduction to Swagger Open Source Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Swagger Open Source Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#swagger-editor" class="md-nav__link">
+    Swagger Editor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger-codegen" class="md-nav__link">
+    Swagger Codegen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger-ui" class="md-nav__link">
+    Swagger UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asciidoctor" class="md-nav__link">
+    asciidoctor
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tic-Tac-Toe/" class="md-nav__link">
+        Tic Tac Toe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_create_and_push_files_to_a_remote_repo/" class="md-nav__link">
+        How to Create and Push Files to a Remote Repository
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Reference guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference guides" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference_guides/Git_Commands/" class="md-nav__link">
+        Git Commands Reference Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference_guides/Quick-Reference-Guide/" class="md-nav__link">
+        Quick Reference Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference_guides/dev_UI_components_reference/" class="md-nav__link">
+        DEV UI Components Reference Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-openapi-swagger-open-source-tools" class="md-nav__link">
+    Introduction to OpenAPI &amp; Swagger Open Source Tools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openapi-swagger" class="md-nav__link">
+    OpenAPI &amp; Swagger
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAPI &amp; Swagger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openapi" class="md-nav__link">
+    OpenAPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger" class="md-nav__link">
+    Swagger
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-openapi" class="md-nav__link">
+    Why Use OpenAPI?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-openapi-specification" class="md-nav__link">
+    Introduction to OpenAPI Specification
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to OpenAPI Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-structure" class="md-nav__link">
+    Basic Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-url" class="md-nav__link">
+    Base URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes-produces" class="md-nav__link">
+    Consumes, Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    Paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-and-output-models" class="md-nav__link">
+    Input and Output Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    Authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-swagger-open-source-tools" class="md-nav__link">
+    Introduction to Swagger Open Source Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Swagger Open Source Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#swagger-editor" class="md-nav__link">
+    Swagger Editor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger-codegen" class="md-nav__link">
+    Swagger Codegen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger-ui" class="md-nav__link">
+    Swagger UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asciidoctor" class="md-nav__link">
+    asciidoctor
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="swagger-introduction-examples">Swagger Introduction &amp; Examples</h1>
+<ul>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#openapi--swagger">OpenAPI &amp; Swagger</a></li>
+<li><a href="#openapi">OpenAPI</a></li>
+<li><a href="#swagger">Swagger</a></li>
+<li><a href="#why-use-openapi">Why Use OpenAPI?</a></li>
+<li><a href="#introduction-to-openapi-specification">Introduction to OpenAPI Specification</a></li>
+<li><a href="#basic-structure">Basic Structure</a></li>
+<li><a href="#metadata">Metadata</a></li>
+<li><a href="#base-url">Base URL</a></li>
+<li><a href="#consumes-produces">Consumes, Produces</a></li>
+<li><a href="#paths">Paths</a></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#responses">Responses</a></li>
+<li><a href="#input-and-output-models">Input and Output Models</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#introduction-to-swagger-open-source-tools">Introduction to Swagger Open Source Tools</a></li>
+<li><a href="#swagger-editor">Swagger Editor</a></li>
+<li><a href="#swagger-codegen">Swagger Codegen</a></li>
+<li><a href="#swagger-ui">Swagger UI</a></li>
+<li><a href="#asciidoctor">asciidoctor</a></li>
+</ul>
+<h2 id="quick-start">Quick Start</h2>
+<ol>
+<li>install: after git clone, execute commands below in root directory:</li>
+</ol>
+<pre><code>swagger-server/bin/install.sh
+</code></pre>
+<p>doing that will produce some client SDKs, server code, asciidoc and html documents, look like this:</p>
+<pre><code>+---asciidoc                    //asciidoc document
++---client                      //auto Generated client SDKs
+|   +---go                      //-- client SDK in go programming language
+|   +---html2                   //-- html document
+|   \---java                    //-- client SDK in java programming language
++---docs                        //html document
+|       swagger-example.html
++---server                      //auto generated server code
+|   +---jaxrs-resteasy          //-- jaxrs server code that uses resteasy
+|   \---spring                  //-- server code that uses spring mvc
+\---swagger-server              // example
+</code></pre>
+<ol>
+<li>run swagger-server：</li>
+</ol>
+<pre><code>java -jar swagger-server/target/swagger-server-${version}.jar
+</code></pre>
+<ol>
+<li>explore:</li>
+</ol>
+<p>swagger.json: <code>http://127.0.0.1:8080/v2/api-docs</code></p>
+<p>swagger-ui: <code>http://127.0.0.1:8080/swagger-ui.html</code></p>
+<p>swagger-ui looks like this:
+<img alt="Demo-Api" src="swagger-ui.png" /></p>
+<hr />
+<h3 id="introduction-to-openapi-swagger-open-source-tools"><strong><em>Introduction to OpenAPI &amp; Swagger Open Source Tools</em></strong></h3>
+<h2 id="openapi-swagger">OpenAPI &amp; Swagger</h2>
+<h3 id="openapi">OpenAPI</h3>
+<p><strong>OpenAPI Specification</strong> (formerly Swagger Specification) is an API description format for REST APIs. An OpenAPI file allows you to describe your entire API, including:</p>
+<ul>
+<li>Available endpoints (<code>/users</code>) and operations on each endpoint (<code>GET /users</code>, <code>POST /users</code>)</li>
+<li>Operation parameters Input and output for each operation</li>
+<li>Authentication methods</li>
+<li>Contact information, license, terms of use and other information.</li>
+</ul>
+<p>API specifications can be written in YAML or JSON. The format is easy to learn and readable to both humans and machines. The complete OpenAPI Specification can be found on GitHub:
+<a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md">OpenAPI 2.0 Specification</a>,
+<a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md">OpenAPI 3.0 Specification</a></p>
+<h3 id="swagger">Swagger</h3>
+<p>Swagger is a set of open-source tools built around the OpenAPI Specification that can help you design, build, document and consume REST APIs. The major Swagger tools include:</p>
+<ul>
+<li><a href="http://editor.swagger.io/?_ga=2.27098621.139862542.1529283950-1958724428.1521772135">Swagger Editor</a> – browser-based editor where you can write OpenAPI specs.</li>
+<li><a href="https://github.com/swagger-api/swagger-codegen">Swagger Codegen</a> – generates server stubs and client libraries from an OpenAPI spec.</li>
+<li><a href="https://swagger.io/swagger-ui/">Swagger UI</a> – renders OpenAPI specs as interactive API documentation.</li>
+</ul>
+<h3 id="why-use-openapi">Why Use OpenAPI?</h3>
+<p>The ability of APIs to describe their own structure is the root of all awesomeness in OpenAPI. Once written, an OpenAPI specification and Swagger tools can drive your API development further in various ways:</p>
+<ul>
+<li>Design-first users: use <a href="https://github.com/swagger-api/swagger-codegen">Swagger Codegen</a> to <strong>generate a server stub</strong> for your API. The only thing left is to implement the server logic – and your API is ready to go live!</li>
+<li>Use <a href="https://github.com/swagger-api/swagger-codegen">Swagger Codegen</a> to <strong>generate client libraries</strong> for your API in over 40 languages.</li>
+<li>Use <a href="https://swagger.io/swagger-ui/">Swagger UI</a> to generate <strong>interactive API documentation</strong> that lets your users try out the API calls directly in the browser.</li>
+<li>Use the spec to connect API-related tools to your API. For example, import the spec to <a href="https://soapui.org/">SoapUI</a> to create automated tests for your API.</li>
+<li>And more! Check out the <a href="https://swagger.io/open-source-integrations/">open-source tools</a> that integrate with Swagger.</li>
+</ul>
+<hr />
+<h2 id="introduction-to-openapi-specification">Introduction to OpenAPI Specification</h2>
+<h3 id="basic-structure"><strong>Basic Structure</strong></h3>
+<p>Swagger can be written in JSON or YAML. In this guide, we only use YAML examples, but JSON works equally well. A sample Swagger specification written in YAML looks like:</p>
+<pre><code class="language-yaml">swagger: &quot;2.0&quot;
+info:
+  title: Sample API
+  description: API description in Markdown.
+  version: 1.0.0
+host: api.example.com
+basePath: /v1
+schemes:
+  - https
+paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in Markdown.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+</code></pre>
+<h3 id="metadata"><strong>Metadata</strong></h3>
+<p>Every Swagger specification starts with the Swagger version, 3.0 being the latest version. A Swagger version defines the overall structure of an API specification -- what you can document and how you document it.</p>
+<pre><code class="language-yaml">swagger: &quot;2.0&quot;
+</code></pre>
+<p>Then, you need to specify the <code>API info</code> -- <code>title</code>, <code>description</code> (optional), <code>version</code> (API version, not file revision or Swagger version).</p>
+<pre><code class="language-yaml">info:
+  title: Sample API
+  description: API description in Markdown.
+  version: 1.0.0
+</code></pre>
+<p><code>version</code> can be a random string. You can use major.minor.patch (as in <a href="http://semver.org/">semantic versioning</a>), or an arbitrary format like 1.0-beta or 2016.11.15.</p>
+<p><code>description</code> can be <a href="http://stackoverflow.com/a/21699210">multiline</a> and supports <a href="https://guides.github.com/features/mastering-markdown/">GitHub Flavored Markdown</a> for rich text representation.</p>
+<p><code>info</code> also supports other fields for contact information, license and other details. Reference: <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#infoObject">Info Object</a>.</p>
+<h3 id="base-url"><strong>Base URL</strong></h3>
+<p>The base URL for all API calls is defined using <code>schemes</code>, <code>host</code> and <code>basePath</code>:</p>
+<pre><code class="language-yaml">host: api.example.com
+basePath: /v1
+schemes:
+  - https
+</code></pre>
+<p>All API paths are relative to the base URL. For example, /users actually means *https://api.example.com/v1/users.</p>
+<p>More info*: <a href="https://swagger.io/docs/specification/2-0/api-host-and-base-path/">API Host and Base URL</a>.</p>
+<h3 id="consumes-produces"><strong>Consumes, Produces</strong></h3>
+<p>The <code>consumes</code> and <code>produces</code> sections define the MIME types supported by the API. The root-level definition can be overridden in individual operations.</p>
+<pre><code class="language-yaml">consumes:
+  - application/json
+  - application/xml
+produces:
+  - application/json
+  - application/xml
+</code></pre>
+<p><em>More info</em>: <a href="https://swagger.io/docs/specification/2-0/mime-types/">MIME Types</a>.</p>
+<h3 id="paths"><strong>Paths</strong></h3>
+<p>The <code>paths</code> section defines individual endpoints (paths) in your API, and the HTTP methods (operations) supported by these endpoints. For example, <code>GET /users</code> can be described as:</p>
+<pre><code class="language-yaml">paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in Markdown.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+</code></pre>
+<p><em>More info</em>: <a href="https://swagger.io/docs/specification/2-0/paths-and-operations/">Paths and Operations</a>.</p>
+<h3 id="parameters"><strong>Parameters</strong></h3>
+<p>Operations can have parameters that can be passed via URL path (<code>/users/{userId}</code>), query string (<code>/users?role=admin</code>), headers (<code>X-CustomHeader: Value</code>) and request body.
+You can define the parameter types, format, whether they are required or optional, and other details:</p>
+<pre><code class="language-yaml">paths:
+  /users/{userId}:
+    get:
+      summary: Returns a user by ID.
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          type: integer
+          minimum: 1
+          description: Parameter description in Markdown.
+      responses:
+        200:
+          description: OK
+</code></pre>
+<p><em>More info</em>: <a href="https://swagger.io/docs/specification/2-0/describing-parameters/">Describing Parameters</a>.</p>
+<h3 id="responses"><strong>Responses</strong></h3>
+<p>For each operation, you can define possible status codes, such as 200 OK or 404 Not Found, and <code>schema</code> of the response body.
+Schemas can be defined inline or referenced from an external definition via <code>$ref</code>. You can also provide example responses for different content types.</p>
+<pre><code class="language-yaml">paths:
+  /users/{userId}:
+    get:
+      summary: Returns a user by ID.
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          type: integer
+          minimum: 1
+          description: The ID of the user to return.
+      responses:
+        200:
+          description: A User object.
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 4
+              name:
+                type: string
+                example: Arthur Dent
+        400:
+          description: The specified user ID is invalid (e.g. not a number).
+        404:
+          description: A user with the specified ID was not found.
+        default:
+          description: Unexpected error
+</code></pre>
+<p><em>More info</em>: <a href="https://swagger.io/docs/specification/2-0/describing-responses/">Describing Responses</a>.</p>
+<h3 id="input-and-output-models"><strong>Input and Output Models</strong></h3>
+<p>The global <code>definitions</code> section lets you define common data structures used in your API. They can be referenced via <code>$ref</code>
+whenever a <code>schema</code> is required -- both for request body and response body. For example, this JSON object:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 4,
+  &quot;name&quot;: &quot;Arthur Dent&quot;
+}
+</code></pre>
+<p>can be represented as:</p>
+<pre><code class="language-yaml">definitions:
+  User:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    # Both properties are required
+    required:
+      - id
+      - name
+</code></pre>
+<p>and then referenced in the request body schema and response body schema as follows:</p>
+<pre><code class="language-yaml">paths:
+  /users/{userId}:
+    get:
+      summary: Returns a user by ID.
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: &quot;#/definitions/User&quot;
+  /users:
+    post:
+      summary: Creates a new user.
+      parameters:
+        - in: body
+          name: user
+          schema:
+            $ref: &quot;#/definitions/User&quot;
+      responses:
+        200:
+          description: OK
+</code></pre>
+<h3 id="authentication"><strong>Authentication</strong></h3>
+<p>The <code>securityDefinitions</code> and <code>security</code> keywords are used to describe the authentication methods used in your API.</p>
+<pre><code class="language-yaml">securityDefinitions:
+  BasicAuth:
+    type: basic
+security:
+  - BasicAuth: []
+</code></pre>
+<p>Supported authentication methods are:</p>
+<ul>
+<li><a href="https://swagger.io/docs/specification/2-0/authentication/basic-authentication/">Basic authentication</a></li>
+<li><a href="https://swagger.io/docs/specification/2-0/authentication/api-keys/">API key</a> (as a header or query parameter)</li>
+<li>OAuth 2 common flows (implicit, password, application and access code)</li>
+</ul>
+<p><em>More info</em>: <a href="https://swagger.io/docs/specification/2-0/authentication/">Authentication</a>.</p>
+<h2 id="introduction-to-swagger-open-source-tools">Introduction to Swagger Open Source Tools</h2>
+<h3 id="swagger-editor"><strong>Swagger Editor</strong></h3>
+<p>Design, describe, and document your API on the first open source editor fully dedicated to OpenAPI-based APIs.
+The Swagger Editor is great for quickly getting started with the OpenAPI (formerly known as the Swagger Specification) specification, with support for Swagger 2.0 and OpenAPI 3.0.</p>
+<ul>
+<li>Runs Anywhere: The Editor works in any development environment, be it locally or in the web</li>
+<li>Smart Feedback: Validate your syntax for OAS-compliance as you write it with concise feedback and error handling</li>
+<li>Instant Visualization: Render your API specification visually and interact with your API while still defining it</li>
+<li>Intelligent Auto-completion: Write syntax faster with a smart and intelligent auto-completion</li>
+<li>Fully Customizable: Easy to configure and customize anything, from line-spacing to themes</li>
+<li>All About Your Build: Generate server stubs and client libraries for your API in every popular language</li>
+</ul>
+<h3 id="swagger-codegen"><strong>Swagger Codegen</strong></h3>
+<p>Swagger Codegen can simplify your build process by generating server stubs and client SDKs for any API, defined with the OpenAPI (formerly known as Swagger) specification,
+so your team can focus better on your API’s implementation and adoption.</p>
+<ul>
+<li>Generate Servers: Remove tedious plumbing and configuration by generating boilerplate server code in over 20 different languages</li>
+<li>Improve API Consumption: Generate client SDKs in over 40 different languages for end developers to easily integrate with your API</li>
+<li>Continuously Improved: Swagger Codegen is always updated with the latest and greatest changes in the programming world</li>
+</ul>
+<h3 id="swagger-ui"><strong>Swagger UI</strong></h3>
+<p>Swagger UI allows anyone — be it your development team or your end consumers — to visualize and interact with the API’s resources without having any of the implementation logic in place.
+It’s automatically generated from your OpenAPI (formerly known as Swagger) Specification, with the visual documentation making it easy for back end implementation and client side consumption.</p>
+<ul>
+<li>Dependency Free: The UI works in any development environment, be it locally or in the web</li>
+<li>Human Friendly: Allow end developers to effortlessly interact and try out every single operation your API exposes for easy consumption</li>
+<li>Easy to Navigate: Quickly find and work with resources and endpoints with neatly categorized documentation</li>
+<li>All Browser Support: Cater to every possible scenario with Swagger UI working in all major browsers</li>
+<li>Fully Customizable: Style and tweak your Swagger UI the way you want with full source code access</li>
+<li>Complete OAS Support: Visualize APIs defined in Swagger 2.0 or OAS 3.0</li>
+</ul>
+<h2 id="asciidoctor"><strong>asciidoctor</strong></h2>
+<ul>
+<li>asciidoc</li>
+<li>asciidoctor</li>
+</ul>
+<p><a href="https://asciidoctor.org/">Asciidoctor</a> is a fast text processor and publishing toolchain for converting <a href="https://asciidoctor.org/docs/what-is-asciidoc">AsciiDoc</a> content to HTML5, DocBook, PDF, and other formats.
+Asciidoctor is written in Ruby, packaged and distributed as a gem to <a href="https://rubygems.org/gems/asciidoctor">RubyGems.org</a>, and packaged for popular Linux distributions, including Fedora, Debian, Ubuntu, and Alpine.
+Asciidoctor can be run on the JVM using AsciidoctorJ and in all JavaScript environments using Asciidoctor.js. Asciidoctor is <a href="https://github.com/asciidoctor/asciidoctor/blob/master/LICENSE">open source software</a>
+and hosted on <a href="https://github.com/asciidoctor/asciidoctor">GitHub</a>.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../explanation_docs/QR_codes_explained/" class="md-footer__link md-footer__link--prev" aria-label="Previous: QR Codes Explained" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              QR Codes Explained
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Tic-Tac-Toe/" class="md-footer__link md-footer__link--next" aria-label="Next: Tic Tac Toe" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tic Tac Toe
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,808 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>API paradigms - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-paradigms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API paradigms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to Docs as Code
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API DOCs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API DOCs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API DOCs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API%20DOCs/API-Documentation/" class="md-nav__link">
+        API Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Explanation docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanation docs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Explanation docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          API paradigms
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        API paradigms
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requestresponse-apis" class="md-nav__link">
+    Request–Response APIs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-driven-apis" class="md-nav__link">
+    Event-Driven APIs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Airbnb/" class="md-nav__link">
+        Airbnb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QR_codes_explained/" class="md-nav__link">
+        QR Codes Explained
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          How to guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="How to guides" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to_guides/SwaggerOpenAPI/" class="md-nav__link">
+        Swagger Introduction & Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to_guides/Tic-Tac-Toe/" class="md-nav__link">
+        Tic Tac Toe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to_guides/how_to_create_and_push_files_to_a_remote_repo/" class="md-nav__link">
+        How to Create and Push Files to a Remote Repository
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Reference guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference guides" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference_guides/Git_Commands/" class="md-nav__link">
+        Git Commands Reference Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference_guides/Quick-Reference-Guide/" class="md-nav__link">
+        Quick Reference Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference_guides/dev_UI_components_reference/" class="md-nav__link">
+        DEV UI Components Reference Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requestresponse-apis" class="md-nav__link">
+    Request–Response APIs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-driven-apis" class="md-nav__link">
+    Event-Driven APIs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="api-paradigms">API paradigms</h1>
+<p>Over the years, multiple API paradigms have emerged, being able able to
+pick the right paradigm is important.
+<br>In this article i explain the
+paradigms you need to know about.</p>
+<p>An API paradigm
+defines the interface exposing backend data of a service to other
+applications.</p>
+<p>We can classify APIs into two categories:</p>
+<ul>
+<li>Request–Response APIs</li>
+<li>Event driven APIs</li>
+</ul>
+<h2 id="requestresponse-apis">Request–Response APIs</h2>
+<p>Request–response APIs typically expose an interface through an
+HTTP-based web server.<br> APIs define a set of endpoints. Clients
+make HTTP requests for data to those endpoints and the server
+returns responses. <br>The response is typically sent back as JSON or
+XML. There are three common paradigms used by services to
+expose request–response APIs: REST, RPC, and GraphQL.</p>
+<p><strong>1.Representational State Transfer</strong></p>
+<p>Representational State Transfer (REST) is the most popular choice
+for API development lately.<br> The REST paradigm is used by provid‐
+ers like Google, Stripe, Twitter, and GitHub. REST is all about
+resources.<br> A resource is an entity that can be identified, named,
+addressed, or handled on the web.<br> REST APIs expose data as resour‐
+ces and use standard HTTP methods to represent <strong>Create,<br> Read,
+Update, and Delete (CRUD)</strong> transactions against these resources.<br>
+For instance, Stripe’s API represents customers, charges, balance,
+refunds, events, files, and payouts as resources.</p>
+<p>Here are some general rules REST APIs follow:</p>
+<ul>
+<li>Resources are part of URLs, like /users.
+  -For each resource, two URLs are generally implemented:<br> one
+  for the collection, like /users, and one for a specific element,
+  like /users/U123.</li>
+<li>Nouns are used instead of verbs for resources. <br>For example,
+  instead of /getUserInfo/U123, use /users/U123.</li>
+<li>HTTP methods like <strong>GET, POST, UPDATE</strong>, and <strong>DELETE</strong> inform the
+  server about the action to be performed.</li>
+</ul>
+<p>Different HTTP meth‐
+ods invoked on the same URL provide different functionality:
+Create
+Use POST for creating new resources.<br>
+Read
+Use GET for reading resources. GET requests never, ever
+change the state of the resource. They have no side effects;
+the GET method has a read-only semantic. GET is idempo‐
+tent. <br>Consequently, you can cache the calls perfectly.
+Update
+Use PUT for replacing a resource and PATCH for partial
+updates for existing resources.
+Delete
+Use DELETE for deleting existing resources.
+• Standard HTTP response status codes are returned by the
+server indicating success or failure. Generally, codes in the 2XX
+range indicate success, 3XX codes indicate a resource has</p>
+<p><strong>2.Remote Procedure Call</strong></p>
+<p>Remote Procedure Call (RPC) is one of the simplest API paradigms,
+in which a client executes a block of code on another server.
+Whereas REST is about resources, RPC is about actions. Clients typ‐
+ically pass a method name and arguments to a server and receive
+back JSON or XML.
+RPC APIs generally follow two simple rules:
+• The endpoints contain the name of the operation to be exe‐
+cuted.
+• API calls are made with the HTTP verb that is most appropri‐
+ate: GET for read-only requests and POST for others.
+RPC style works great for APIs that expose a variety of actions that
+might have more nuances and complications than can be encapsula‐
+ted with CRUD or for which there are side effects unrelated to the
+“resource” at hand. RPC-style APIs also accommodate complicated
+resource models or actions upon multiple types of resources</p>
+<p><strong>3. GraphQL</strong>
+GraphQL is a query language for APIs that has gained significant
+traction recently. It was developed internally by Facebook in 2012
+before being publicly released in 2015 and has been adopted by API
+providers like GitHub, Yelp, and Pinterest. GraphQL allows clients
+to define the structure of the data required, and the server returns exactly that structure.</p>
+<p>```js{
+ user(login: "saurabhsahni") {
+ id
+ name
+ company
+ createdAt
+ }</p>
+<p>Example  Response from GitHub GraphQL API
+{
+ "data": {
+ "user": {
+ "id": "MDQ6VXNlcjY1MDI5",
+ "name": "Erick Njuki",
+ "company": "Slack",
+ "createdAt": "2009-03-19T21:00:06Z"
+ }
+ }
+}</p>
+<pre><code>
+Unlike REST and RPC APIs, GraphQL APIs need only a single URL
+endpoint. Similarly, you do not need different HTTP verbs to
+describe the operation. Instead, you indicate in the JSON body
+whether you’re performing a query or a mutation, as illustrated in
+Example 2-7. GraphQL APIs support GET and POST verbs.
+Example 2-7. GraphQL API call to GitHub
+
+```js
+POST /graphql
+HOST api.github.com
+Content-Type: application/json
+Authorization: bearer 2332dg1acf9f502737d5e
+ xoxp-16501860787-17163410960-113570727396-7051650
+{
+ &quot;query&quot;: &quot;query { viewer { login }}&quot;
+}
+</code></pre>
+<h2 id="event-driven-apis">Event-Driven APIs</h2>
+<p>With request–response APIs, for services with constantly changing
+data, the response can quickly become stale. Developers who want
+to stay up to date with the changes in data often end up polling the
+API. With polling, developers constantly query API endpoints at a
+predetermined frequency and look for new data,</p>
+<p>To share data about events in real time, there are three common
+mechanisms: WebHooks, WebSockets, and HTTP Streaming. We dive
+deeper into each of them in the subsections that follow.
+WebHooks
+A WebHook is just a URL that accepts an HTTP POST (or GET, PUT,
+or DELETE). An API provider implementing WebHooks will simply
+POST a message to the configured URL when something happens.
+Unlike with request–response APIs, with WebHooks, you can
+receive updates in real time. Several API providers, like Slack, Stripe,
+GitHub, and Zapier, support WebHooks. For instance, if you want to
+keep track of “channels” in a Slack team with Slack’s Web API, you
+might need to continuously poll the API for new channels.</p>
+<p><strong>1. WebSockets</strong>
+WebSocket is a protocol used to establish a two-way streaming com‐
+munication channel over a single Transport Control Protocol (TCP)
+connection. Although the protocol is generally used between a web
+client (e.g., a browser) and a server, it’s sometimes used for serverto-server communication, as well.
+The WebSocket protocol is supported by major browsers and often
+used by real-time applications. Slack uses WebSockets to send all
+kinds of events happening in a workspace to Slack’s clients, includ‐
+ing new messages, emoji reactions added to items, and channel crea‐
+tions. Slack also provides a WebSocket-based Real Time Messaging
+API to developers so that they can receive events from Slack in real
+time and send messages as users. Similarly, Trello uses WebSockets
+to push changes made by other people down from servers to brows‐
+ers listening on the appropriate channels, and Blockchain uses its
+WebSocket API to send real-time notifications about new transac‐
+tions and blocks</p>
+<p>utilizes the HTTP Streaming protocol to deliver data
+through a single connection opened between an app and Twitter’s
+streaming API. The big benefit for developers is that they don’t need
+to poll the Twitter API continuously for new tweets. Twitter’s
+Streaming API can push new tweets over a single HTTP connection
+instead of a custom protocol. This saves resources for both Twitter
+and the developer.
+HTTP Streaming is easy to consume. However, one of the issues
+with it is related to buffering. Clients and proxies often have buffer
+limits. They might not start rendering data to the application until a
+threshold is met. Also, if clients want to frequently change what kind
+of events they listen to, HTTP Streaming might not be ideal because
+it requires reconnections.</p>
+<pre><code>
+</code></pre>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../API%20DOCs/API-Documentation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Documentation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              API Documentation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Airbnb/" class="md-footer__link md-footer__link--next" aria-label="Next: Airbnb" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Airbnb
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
